@@ -78,6 +78,15 @@ def convertiOSAndAndroidFile(table,targetFloderPath,iOSAdditional,androidAdditio
 #            英文的 文件名 不知道为什么要改。。。
 #            if languageName == 'en':
 #                path = targetFloderPath + "/android/values/"
+
+            for tempIndex in range(len(values)):
+                values[tempIndex] = values[tempIndex].replace("&","&amp;")
+                values[tempIndex] = values[tempIndex].replace("<","&lt;")
+                values[tempIndex] = values[tempIndex].replace("%@","%s")
+                values[tempIndex] = values[tempIndex].replace("'","\\'")
+                values[tempIndex] = values[tempIndex].replace("⚠️","")
+
+
             StringsXmlFileUtil.writeToFile(keys,values,path,androidAdditional)
 
 def main():
