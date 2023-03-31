@@ -70,9 +70,12 @@ def convertiOSAndAndroidFile(table,targetFloderPath,iOSAdditional,androidAdditio
             # iOS
             LocalizableStringsFileUtil.writeToFile(keys,values,targetFloderPath + "/ios/"+languageName+".lproj/",iOSAdditional)
 
-            # Android
+            # Android 中文 文件名称需要更换
             if languageName == "zh-Hans":
                 languageName = "zh-rCN"
+                
+            if languageName == "zh-Hant":
+                languageName = "zh-rHK"
 
             path = targetFloderPath + "/android/values-"+languageName+"/"
 #            英文的 文件名 不知道为什么要改。。。
