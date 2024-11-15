@@ -34,7 +34,11 @@ def startConvert(options):
             ws = workbook.add_sheet('Localizable.strings')
 
             for parent, dirnames, filenames in os.walk(directory):
+
                 for dirname in dirnames:
+                    if not(dirname.endswith(".lproj")) or dirname.startswith("Base."):
+                        continue
+
                     # KeyName & CountryCode
                     if index == 0:
                         ws.write(0,0,'keyName')

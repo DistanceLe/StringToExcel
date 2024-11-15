@@ -5,6 +5,7 @@ from XlsFileUtil import XlsFileUtil
 from StringsXmlFileUtil import StringsXmlFileUtil
 from LocalizableStringsFileUtil import LocalizableStringsFileUtil
 from Log import Log
+import shutil
 
 def addParser():
     parser = OptionParser()
@@ -47,6 +48,17 @@ def startConvert(options):
         xlsFileUtil = XlsFileUtil(filePath)
 
         # iOS & Android
+        #先删除 旧的文件夹
+        try:
+            shutil.rmtree(targetFloderPath + "/ios字符串/")
+            shutil.rmtree(targetFloderPath + "/android字符串/")
+        except OSError as e:
+            print("删除旧的文件夹 时出错:"+e.strerror)
+
+
+        return
+
+        #开始写入
         table = xlsFileUtil.getTableByIndex(0)
         convertiOSAndAndroidFile(table,targetFloderPath,iOSAdditional,androidAdditional)
 
@@ -68,7 +80,7 @@ def convertiOSAndAndroidFile(table,targetFloderPath,iOSAdditional,androidAdditio
             values = table.col_values(index)
             del values[0]
             # iOS
-            LocalizableStringsFileUtil.writeToFile(keys,values,targetFloderPath + "/ios/"+languageName+".lproj/",iOSAdditional)
+            LocalizableStringsFileUtil.writeToFile(keys,values,targetFloderPath + "/ios字符串/"+languageName+".lproj/",iOSAdditional)
 
             # Android 中文 文件名称需要更换
             if languageName == "zh-Hans":
@@ -77,7 +89,7 @@ def convertiOSAndAndroidFile(table,targetFloderPath,iOSAdditional,androidAdditio
             if languageName == "zh-Hant":
                 languageName = "zh-rHK"
 
-            path = targetFloderPath + "/android/values-"+languageName+"/"
+            path = targetFloderPath + "/android字符串/values-"+languageName+"/"
 #            英文的 文件名 不知道为什么要改。。。
 #            if languageName == 'en':
 #                path = targetFloderPath + "/android/values/"

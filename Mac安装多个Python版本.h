@@ -36,6 +36,9 @@ Mac安装多个Python版本
     2.3.7
     ...
 
+//命令行 设置代理  .zshrc  需要加上
+alias proxy='export all_proxy=socks5://127.0.0.1:1086'
+alias unproxy='unset all_proxy'
 
 
 找到自己需要的版本进行安装
