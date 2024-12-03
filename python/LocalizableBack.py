@@ -56,7 +56,7 @@ def startConvert(options):
             print("删除旧的文件夹 时出错:"+e.strerror)
 
 
-        return
+#        return
 
         #开始写入
         table = xlsFileUtil.getTableByIndex(0)
