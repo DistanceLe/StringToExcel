@@ -84,14 +84,14 @@ def startConvert(options):
                     filePath = targetFilePath + "/Localizable_" + conturyCode + ".xlsx"
                     wb.save(filePath)  #保存Excel 表
 
-                    print "Convert successfully! you can see xls file in %s" % (filePath)
+                    print ("Convert successfully! you can see xls file in %s" % (filePath))
 
             
 
         else:
-            print "Target file path can not be empty! try -h for help."
+            print ("Target file path can not be empty! try -h for help.")
     else:
-        print "Localizable.strings files directory can not be empty! try -h for help."
+        print ("Localizable.strings files directory can not be empty! try -h for help.")
 
 
 def main():

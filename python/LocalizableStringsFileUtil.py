@@ -15,7 +15,7 @@ class LocalizableStringsFileUtil:
 
         Log.info("Creating iOS file:" + directory+"Localizable.strings")
 
-        fo = open(directory+"Localizable.strings", "wb")
+        fo = open(directory+"Localizable.strings", "w", encoding="utf-8")
 
         for x in range(len(keys)):
             if values[x] is None or values[x] == '':

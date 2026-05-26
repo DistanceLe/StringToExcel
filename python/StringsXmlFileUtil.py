@@ -14,7 +14,7 @@ class StringsXmlFileUtil:
 
         Log.info("Creating android file:" + directory + "/strings.xml")
 
-        fo = open(directory + "/strings.xml", "wb")
+        fo = open(directory + "/strings.xml", "w", encoding="utf-8")
 
         stringEncoding = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n"
         fo.write(stringEncoding)
